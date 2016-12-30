@@ -8,6 +8,7 @@
     "inlineSources": true,
     "emitDecoratorMetadata": true,
     "lib": [
+      "es6",
       "es2015",
       "dom"
     ],
@@ -15,11 +16,13 @@
     "declaration": true,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
+    "skipLibCheck": true,
     "typeRoots": [
       "../node_modules/@types"
     ]
   },
   "angularCompilerOptions": {
-    "genDir": "../dist"
+    "genDir": "../dist",
+    "skipTemplateCodegen": true
   }
 }
