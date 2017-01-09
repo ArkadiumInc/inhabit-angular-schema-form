@@ -5,6 +5,7 @@ import { FormControlText } from './form-controls/form-control-text';
 
 const SchemaPropertiesTypes = {
     String: 'string',
+    Object: 'object'
 };
 
 const FormControlTypes = {
@@ -19,9 +20,11 @@ export class JsonSchemaFormService {
     }
 
     transformSchemaToForm(schema: any, form: any) {
+        schema = this.flattenSchema(schema);
         // Iterate through schema properties
         const keys = Object.keys(schema.properties);
-        return keys.map(key => {
+        let formControls: Array<any> = [];
+        keys.forEach(key => {
             const property = schema.properties[key];
             property.required = schema.required && schema.required.indexOf(key);
             // Create object for future control
@@ -30,22 +33,48 @@ export class JsonSchemaFormService {
                 schema: property,
                 formExtra: form.find((formProp: any) => formProp.key === key) || {}
             };
-            return this.transformToFormControl(controlData);
+            let controls = this.transformToFormControl(controlData);
+            formControls.push(controls);
         });
+        return formControls;
+    }
+
+    private flattenSchema(schema: any) {
+        const keys = Object.keys(schema.properties);
+        keys.forEach(key => {
+            const property = schema.properties[key];
+            if (property.type !== SchemaPropertiesTypes.Object) {
+                return;
+            }
+            // Flatten all nested properties
+            let childKeys = Object.keys(property.properties);
+            childKeys.map(childKey => {
+                schema.properties[key + '.' + childKey] = property.properties[childKey];
+            });
+            // Delete source property
+            delete schema.properties[key];
+        });
+        return schema;
     }
 
     fillControlWithValues(formControls: any, model: any) {
         // Fill controls with values
         if (model) {
             formControls.forEach((formControl: any, index: any, resultControls: any) => {
-                let modelKeys = Object.keys(model);
-                if (modelKeys.indexOf(formControl.key) != -1) {
-                    resultControls[index].value = model[formControl.key] || '';
-                } else {
-                    resultControls[index].value = '';
-                }
+                resultControls[index].value = this.getPropertyByPath(model, formControl.key) || '';
             });
         }
+    }
+
+    private getPropertyByPath(obj: any, string: string): any {
+        var parts = string.split('.');
+        var newObj = obj[parts[0]];
+        if (newObj && parts[1]) {
+            parts.splice(0, 1);
+            var newString = parts.join('.');
+            return this.getPropertyByPath(newObj, newString);
+        }
+        return newObj;
     }
 
     private transformToFormControl(controlData: any) {
