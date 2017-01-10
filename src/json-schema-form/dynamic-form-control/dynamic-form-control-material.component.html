@@ -2,21 +2,21 @@
     <div [ngSwitch]="control.controlType">
 
         <!-- Text Form Control -->
-        <md-input *ngSwitchCase="'text'" [formControlName]="control.key" [id]="control.key" [value]="control.value"
+        <md-input *ngSwitchCase="'text'"
+                  [formControlName]="control.key"
+                  [id]="control.key"
+                  [value]="control.value"
                   [type]="control.controlType">
             <md-placeholder>{{control.title}}</md-placeholder>
         </md-input>
         <!-- Text Form Control -->
 
         <!-- Select Form Control -->
-        <div class="md-like-select-wrapper" *ngSwitchCase="'select'">
-            <label class="md-input-placeholder" [attr.for]="control.key">{{control.title}}</label>
-            <select class="md-like-select" [formControlName]="control.key" [id]="control.key">
-                <option *ngFor="let opt of control.options" [value]="opt.key"
-                        [attr.selected]="control.value == opt.key ? true : null">{{opt.value}}
-                </option>
-            </select>
-        </div>
+        <md-select *ngSwitchCase="'select'"
+                   placeholder="{{control.title}}"
+                   [formControlName]="control.key">
+            <md-option *ngFor="let opt of control.options" [value]="opt.key">{{ opt.value }}</md-option>
+        </md-select>
         <!-- Select Form Control -->
 
     </div>

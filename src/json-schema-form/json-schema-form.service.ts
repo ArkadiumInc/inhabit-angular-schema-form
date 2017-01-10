@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { FormControlSelect } from './form-controls/form-control-select';
 import { FormControlText } from './form-controls/form-control-text';
+import { get as _get, set as _set } from 'lodash';
 
 const SchemaPropertiesTypes = {
     String: 'string',
@@ -39,6 +40,23 @@ export class JsonSchemaFormService {
         return formControls;
     }
 
+    fillControlWithValues(formControls: any, model: any) {
+        // Fill controls with values
+        if (model) {
+            formControls.forEach((formControl: any, index: any, resultControls: any) => {
+                let value = _get(model, formControl.key) || '';
+                // Conversion to string due to enum values
+                resultControls[index].value = value.toString();
+            });
+        }
+    }
+
+    assignFormValueToSourceModel(sourceModel: any, formValue: any) {
+        Object.keys(formValue).forEach(key => {
+            _set(sourceModel, key, formValue[key]);
+        });
+    }
+
     private flattenSchema(schema: any) {
         const keys = Object.keys(schema.properties);
         keys.forEach(key => {
@@ -55,26 +73,6 @@ export class JsonSchemaFormService {
             delete schema.properties[key];
         });
         return schema;
-    }
-
-    fillControlWithValues(formControls: any, model: any) {
-        // Fill controls with values
-        if (model) {
-            formControls.forEach((formControl: any, index: any, resultControls: any) => {
-                resultControls[index].value = this.getPropertyByPath(model, formControl.key) || '';
-            });
-        }
-    }
-
-    private getPropertyByPath(obj: any, string: string): any {
-        var parts = string.split('.');
-        var newObj = obj[parts[0]];
-        if (newObj && parts[1]) {
-            parts.splice(0, 1);
-            var newString = parts.join('.');
-            return this.getPropertyByPath(newObj, newString);
-        }
-        return newObj;
     }
 
     private transformToFormControl(controlData: any) {
@@ -112,7 +110,7 @@ export class JsonSchemaFormService {
         let formObject: any = this.createStandardFormObject(controlData);
 
         formObject.options = controlData.schema.enum.map((enumValue: any) => {
-            return {key: enumValue, value: enumValue};
+            return {key: enumValue.toString(), value: enumValue.toString()};
         });
         return new FormControlSelect(formObject);
     }

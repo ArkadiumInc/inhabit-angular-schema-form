@@ -20,10 +20,10 @@ export class JsonSchemaFormComponent implements OnChanges {
 
     /**
      * Change source model object, and emit event with it
-     * @param value
+     * @param formValue
      */
-    jsonSchemaFormSubmitted(value: any) {
-        Object.assign(this.sourceModel, value);
+    jsonSchemaFormSubmitted(formValue: any) {
+        this.jsfService.assignFormValueToSourceModel(this.sourceModel, formValue);
         this.onFormSubmit.emit(this.sourceModel);
     };
 
