@@ -39,6 +39,8 @@
     "@angular/platform-server": "^2.4.0",
     "@types/lodash": "^4.14.47",
     "@types/node": "^6.0.46",
+    "commitizen": "^2.9.5",
+    "cz-conventional-changelog": "^1.2.0",
     "gulp": "^3.9.1",
     "lodash": "^4.17.4",
     "reflect-metadata": "^0.1.8",
@@ -53,5 +55,10 @@
   },
   "dependencies": {
     "@types/node": "^6.0.54"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
