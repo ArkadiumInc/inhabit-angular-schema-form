@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { FormControlSelect } from './form-controls/form-control-select';
 import { FormControlText } from './form-controls/form-control-text';
-import { get as _get, set as _set } from 'lodash';
+import { get as _get, set as _set } from 'object-path';
 
 const SchemaPropertiesTypes = {
     String: 'string',
