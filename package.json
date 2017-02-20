@@ -1,14 +1,14 @@
 {
   "name": "inhabit-angular-schema-form",
-  "version": "1.1.0-alpha.0",
+  "version": "1.2.0",
   "description": "InHabit angular2 Json Schema Form module",
   "main": "index.js",
   "module": "index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "build": "rm -rf dist && ngc -p src/tsconfig.json && gulp",
-    "postbuild": "cp package.json README.md dist/",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "npm run clean",
+    "build": "gulp build",
+    "clean": "rimraf ./dist",
     "release": "standard-version"
   },
   "repository": {
@@ -29,34 +29,31 @@
   },
   "homepage": "https://github.com/ArkadiumInc/inhabit-angular-schema-from#readme",
   "devDependencies": {
+    "@types/object-path": "^0.9.28",
+    "commitizen": "^2.9.5",
+    "cz-conventional-changelog": "^1.2.0",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0",
+    "gulp-ngc": "^0.2.0",
+    "gulp-typescript": "^3.1.5",
+    "rimraf": "^2.5.4",
+    "standard-version": "^4.0.0",
+    "through-gulp": "^0.5.0",
+    "typescript": "^2.1.6"
+  },
+  "dependencies": {
     "@angular/common": "^2.4.0",
-    "@angular/compiler": "^2.4.0",
-    "@angular/compiler-cli": "^2.4.0",
+    "@angular/compiler": "^2.4.8",
+    "@angular/compiler-cli": "^2.4.8",
     "@angular/core": "^2.4.0",
     "@angular/forms": "^2.4.1",
     "@angular/http": "^2.4.1",
     "@angular/material": "^2.0.0-beta.1",
     "@angular/platform-browser": "~2.4.0",
     "@angular/platform-server": "^2.4.0",
-    "@types/lodash": "^4.14.47",
-    "@types/node": "^6.0.46",
-    "commitizen": "^2.9.5",
-    "cz-conventional-changelog": "^1.2.0",
-    "gulp": "^3.9.1",
-    "lodash": "^4.17.4",
-    "reflect-metadata": "^0.1.8",
-    "rxjs": "^5.0.0-beta.12",
-    "standard-version": "^4.0.0",
-    "typescript": "2.0.2",
-    "zone.js": "^0.6.26"
-  },
-  "peerDependencies": {
-    "@angular/compiler": "^2.3.1",
-    "@angular/compiler-cli": "^2.3.1",
-    "@angular/core": "^2.3.1"
-  },
-  "dependencies": {
-    "@types/node": "^6.0.54"
+    "object-path": "^0.11.3",
+    "rxjs": "^5.1.1",
+    "zone.js": "^0.7.7"
   },
   "config": {
     "commitizen": {

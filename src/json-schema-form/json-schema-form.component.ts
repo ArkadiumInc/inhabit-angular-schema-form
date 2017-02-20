@@ -4,8 +4,8 @@ import { JsonSchemaFormService } from './json-schema-form.service';
 
 @Component({
     selector: 'json-schema-form',
-    templateUrl: 'json-schema-form.component.html',
-    styleUrls: ['json-schema-form.component.less']
+    templateUrl: './json-schema-form.component.html',
+    styleUrls: [ './json-schema-form.component.css' ]
 })
 export class JsonSchemaFormComponent implements OnChanges {
     @Input() schema: any;
@@ -15,8 +15,7 @@ export class JsonSchemaFormComponent implements OnChanges {
     @Output('on-form-close') onFormClose: EventEmitter<any> = new EventEmitter();
     resultControls: any;
 
-    constructor(private jsfService: JsonSchemaFormService) {
-    }
+    constructor(private jsfService: JsonSchemaFormService) {}
 
     /**
      * Change source model object, and emit event with it
@@ -32,7 +31,11 @@ export class JsonSchemaFormComponent implements OnChanges {
     };
 
     ngOnChanges(changes: SimpleChanges) {
-        this.processInputData();
+        try {
+            this.processInputData();
+        } catch(e) {
+            console.error(e);
+        }
     }
 
     private processInputData() {

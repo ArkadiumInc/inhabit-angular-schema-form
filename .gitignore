@@ -1,4 +1,6 @@
 /.idea
+.tscout
 .vscode
 node_modules
 dist
+example/node_modules

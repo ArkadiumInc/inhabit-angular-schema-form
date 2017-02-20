@@ -19,6 +19,10 @@
         </md-select>
         <!-- Select Form Control -->
 
+        <!-- Checkbox Form Control -->
+        <md-checkbox *ngSwitchCase="'checkbox'" [formControlName]="control.key">{{control.title}}</md-checkbox>
+        <!-- Checkbox Form Control -->
+
     </div>
     <div class="errorMessage" *ngIf="!isValid">{{control.title}} is required</div>
 </div>

@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { FormControlSelect } from './form-controls/form-control-select';
-import { FormControlText } from './form-controls/form-control-text';
-import { get as _get, set as _set } from 'lodash';
+import { FormControlSelect }        from './form-controls/form-control-select';
+import { FormControlText }          from './form-controls/form-control-text';
+import { FormControlCheckbox }      from './form-controls/form-control-checkbox';
+import { get as _get, set as _set } from 'object-path';
 
 const SchemaPropertiesTypes = {
+    Number: 'number',
+    Boolean: 'boolean',
     String: 'string',
     Object: 'object'
 };
 
 const FormControlTypes = {
+    Checkbox: 'checkbox',
     Select: 'select',
     TextBox: 'text'
 };
@@ -17,26 +21,26 @@ const FormControlTypes = {
 @Injectable()
 export class JsonSchemaFormService {
 
-    constructor() {
-    }
+    constructor() { }
 
     transformSchemaToForm(schema: any, form: any) {
         schema = this.flattenSchema(schema);
         // Iterate through schema properties
-        const keys = Object.keys(schema.properties);
         let formControls: Array<any> = [];
-        keys.forEach(key => {
-            const property = schema.properties[key];
-            property.required = schema.required && schema.required.indexOf(key);
-            // Create object for future control
-            let controlData = {
-                key: key,
-                schema: property,
-                formExtra: form.find((formProp: any) => formProp.key === key) || {}
-            };
-            let controls = this.transformToFormControl(controlData);
-            formControls.push(controls);
-        });
+        debugger;
+        Object.keys(schema.properties)
+            .forEach(key => {
+                const property = schema.properties[key];
+                property.required = schema.required && schema.required.indexOf(key);
+                // Create object for future control
+                let controlData = {
+                    key: key,
+                    schema: property,
+                    formExtra: form.find((formProp: any) => formProp.key === key) || {}
+                };
+                let controls = this.transformToFormControl(controlData);
+                formControls.push(controls);
+            });
         return formControls;
     }
 
@@ -52,9 +56,8 @@ export class JsonSchemaFormService {
     }
 
     assignFormValueToSourceModel(sourceModel: any, formValue: any) {
-        Object.keys(formValue).forEach(key => {
-            _set(sourceModel, key, formValue[key]);
-        });
+        Object.keys(formValue)
+            .forEach(key => _set(sourceModel, key, formValue[key]));
     }
 
     private flattenSchema(schema: any) {
@@ -80,6 +83,11 @@ export class JsonSchemaFormService {
         let formControl: any;
 
         switch (controlType) {
+            case(FormControlTypes.Checkbox):
+            {
+                formControl = this.transformToCheckboxType(controlData);
+                break;
+            }
             case(FormControlTypes.Select):
             {
                 formControl = this.transformToSelectType(controlData);
@@ -95,14 +103,15 @@ export class JsonSchemaFormService {
     }
 
     private selectTypeOfControl(schema: any) {
-        if (schema.type === SchemaPropertiesTypes.String) {
-            if (schema.enum) {
-                return 'select';
-            } else {
-                return 'text';
-            }
+        switch (schema.type) {
+            case SchemaPropertiesTypes.String:
+            case SchemaPropertiesTypes.Number:
+                return schema.enum ? FormControlTypes.Select : FormControlTypes.TextBox;
+            case SchemaPropertiesTypes.Boolean:
+                return FormControlTypes.Checkbox;
+            default:
+                throw new Error("Cannot handle property of schema with type " + schema.type);
         }
-        throw new Error("Cannot handle property of schema with type " + schema.type);
     }
 
     // TODO Allow to set value (selected option)
@@ -119,6 +128,12 @@ export class JsonSchemaFormService {
     private transformToTextType(controlData: any) {
         let formObject = this.createStandardFormObject(controlData);
         return new FormControlText(formObject);
+    }
+
+    // TODO Allow to set value
+    private transformToCheckboxType(controlData: any) {
+        let formObject = this.createStandardFormObject(controlData);
+        return new FormControlCheckbox(formObject);
     }
 
     private createStandardFormObject(controlData: any) {

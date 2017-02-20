@@ -13,6 +13,10 @@
             </option>
         </select>
         <!-- Select Form Control -->
+        
+        <!-- Checkbox Form Control -->
+        <input *ngSwitchCase="'checkbox'" [formControlName]="control.key" [id]="control.key" type="checkbox" [value]="control.value" />
+        <!-- Checkbox Form Control -->
 
     </div>
     <div class="errorMessage" *ngIf="!isValid">{{control.title}} is required</div>
