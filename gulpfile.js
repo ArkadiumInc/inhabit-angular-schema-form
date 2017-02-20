@@ -3,7 +3,7 @@ const ts   = require('gulp-typescript');
 const less = require('gulp-less');
 const gutil = require('gulp-util');
 const depsToPeer = require('./scripts/dev-to-peer');
-const inlineResources = require('./scripts/inline-resources');
+const { templates, styles } = require('./scripts/inline-resources');
 
 const project = ts.createProject('./src/tsconfig.json');
 
@@ -17,8 +17,9 @@ g.task('build', [ 'typescript', 'copy:readme', 'copy:package' ]);
 g.task('typescript', [ 'less', 'html' ], () => g
     .src('./src/**/*.ts')
     .pipe(project())
-    .pipe(g.dest('./dist/'))
-    .on('end', () => inlineResources('./dist/')));
+    .pipe(templates())
+    .pipe(styles())
+    .pipe(g.dest('./dist/')));
 
 g.task('less', () => g
     .src('./src/**/*.less')
