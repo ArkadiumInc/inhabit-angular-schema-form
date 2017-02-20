@@ -17,6 +17,7 @@ const getShortenedFile = (dirname, name) => {
 exports.templates = () => through(function (file, enc, cb) {
     const fileContents = file.contents
         .toString()
+        .replace(/\s*moduleId:\s*module\.id\s*,?\s*/gm, '')
         .replace(/templateUrl:\s*'([^']+?\.html)'/g, (m, templateUrl) =>
             `template: "${getShortenedFile(path.dirname(file.path), templateUrl)}"`);
     file.contents = Buffer.from(fileContents);

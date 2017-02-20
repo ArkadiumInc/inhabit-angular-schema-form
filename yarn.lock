@@ -6,7 +6,7 @@
   version "2.4.8"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.8.tgz#e45a77a9d852c8e7135053ff38cf805435458c48"
 
-"@angular/compiler-cli@^2.4.0":
+"@angular/compiler-cli@^2.4.1", "@angular/compiler-cli@^2.4.8":
   version "2.4.8"
   resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-2.4.8.tgz#6dad3b467243166bf2515d21993d2d1a4700a161"
   dependencies:
@@ -14,7 +14,7 @@
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
 
-"@angular/compiler@^2.4.0":
+"@angular/compiler@^2.4.8":
   version "2.4.8"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.8.tgz#fa788fc8bed9f322b040af2b9a06a70991390e23"
 
@@ -1046,6 +1046,15 @@ gulp-less@^3.3.0:
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
 
+gulp-ngc@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/gulp-ngc/-/gulp-ngc-0.2.0.tgz#87b8b61970d0a63456c611bb8273e5635692373e"
+  dependencies:
+    "@angular/compiler-cli" "^2.4.1"
+    gulp "^3.9.1"
+    gulp-util "^3.0.8"
+    through2 "^2.0.3"
+
 gulp-sourcemaps@1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/gulp-sourcemaps/-/gulp-sourcemaps-1.6.0.tgz#b86ff349d801ceb56e1d9e7dc7bbcb4b7dee600c"
@@ -1065,7 +1074,7 @@ gulp-typescript@^3.1.5:
     through2 "~2.0.1"
     vinyl-fs "~2.4.3"
 
-gulp-util@^3.0.0, gulp-util@^3.0.7, gulp-util@~3.0.7:
+gulp-util@^3.0.0, gulp-util@^3.0.7, gulp-util@^3.0.8, gulp-util@~3.0.7:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -2419,7 +2428,7 @@ through2@^0.6.0, through2@^0.6.1:
     readable-stream ">=1.0.33-1 <1.1.0-0"
     xtend ">=4.0.0 <4.1.0-0"
 
-through2@^2.0.0, through2@^2.0.2, through2@~2.0.0, through2@~2.0.1:
+through2@^2.0.0, through2@^2.0.2, through2@^2.0.3, through2@~2.0.0, through2@~2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
   dependencies:

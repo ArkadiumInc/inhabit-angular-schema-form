@@ -4,8 +4,8 @@ import { JsonSchemaFormService } from './json-schema-form.service';
 
 @Component({
     selector: 'json-schema-form',
-    templateUrl: 'json-schema-form.component.html',
-    styleUrls: ['json-schema-form.component.less']
+    templateUrl: './json-schema-form.component.html',
+    styleUrls: [ './json-schema-form.component.css' ]
 })
 export class JsonSchemaFormComponent implements OnChanges {
     @Input() schema: any;

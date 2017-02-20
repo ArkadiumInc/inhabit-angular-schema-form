@@ -7,9 +7,7 @@
   "typings": "index.d.ts",
   "scripts": {
     "prebuild": "npm run clean",
-    "build": "ngc -p src/tsconfig.json && gulp",
-    "postbuild": "node scripts/copy-package",
-    "rebuild": "tsc -p src/tsconfig.json && gulp",
+    "build": "gulp build",
     "clean": "rimraf ./dist",
     "release": "standard-version"
   },
@@ -36,6 +34,7 @@
     "cz-conventional-changelog": "^1.2.0",
     "gulp": "^3.9.1",
     "gulp-less": "^3.3.0",
+    "gulp-ngc": "^0.2.0",
     "gulp-typescript": "^3.1.5",
     "rimraf": "^2.5.4",
     "standard-version": "^4.0.0",
@@ -44,8 +43,8 @@
   },
   "dependencies": {
     "@angular/common": "^2.4.0",
-    "@angular/compiler": "^2.4.0",
-    "@angular/compiler-cli": "^2.4.0",
+    "@angular/compiler": "^2.4.8",
+    "@angular/compiler-cli": "^2.4.8",
     "@angular/core": "^2.4.0",
     "@angular/forms": "^2.4.1",
     "@angular/http": "^2.4.1",

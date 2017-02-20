@@ -6,7 +6,7 @@ import { FormControlBase } from '../form-controls/form-control-base';
 @Component({
     selector: 'df-control',
     templateUrl: './dynamic-form-control-material.component.html',
-    styleUrls: ['./dynamic-form-control.component.less']
+    styleUrls: ['./dynamic-form-control.component.css']
 })
 export class DynamicFormControlComponent {
     @Input() control: FormControlBase<any>;
