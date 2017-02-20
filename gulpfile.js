@@ -1,22 +1,42 @@
-var gulp = require('gulp');
-var inlineResources = require('./scripts/inline-resources');
+const g    = require('gulp');
+const ts   = require('gulp-typescript');
+const less = require('gulp-less');
+const gutil = require('gulp-util');
+const depsToPeer = require('./scripts/dev-to-peer');
+const inlineResources = require('./scripts/inline-resources');
 
-gulp.task('copy-and-inline-resource', copyHtml);
+const project = ts.createProject('./src/tsconfig.json');
 
-function copyHtml() {
-    gulp.src('src/**/*.html')
-        .pipe(gulp.dest('./dist/')).on('end', copyScss);
-}
+g.task('default', [ 'watch' ]);
 
-function copyScss() {
-    gulp.src('./src/**/*.less')
-        .pipe(gulp.dest('./dist/')).on('end', inlineResource);
-}
+g.task('watch', [ 'build' ], () => g
+    .watch('./src/**/*.*', [ 'typescript' ]));
 
-gulp.task('copy:readme', () => gulp.src('./README.md').pipe(gulp.dest('./dist/')));
+g.task('build', [ 'typescript', 'copy:readme', 'copy:package' ]);
 
-function inlineResource() {
-    inlineResources('./dist/');
-}
+g.task('typescript', [ 'less', 'html' ], () => g
+    .src('./src/**/*.ts')
+    .pipe(project())
+    .pipe(g.dest('./dist/'))
+    .on('end', () => inlineResources('./dist/')));
 
-gulp.task('default', ['copy-and-inline-resource', 'copy:readme']);
+g.task('less', () => g
+    .src('./src/**/*.less')
+    .pipe(less())
+    .pipe(g.dest('./dist/')));
+
+g.task('html', () => g
+    .src('./src/**/*.html')
+    .pipe(g.dest('./dist/'))
+    .on('error', err => gutil.error(err)));
+
+g.task('copy:readme', () => g
+    .src('./README.md')
+    .pipe(g.dest('./dist/'))
+    .on('error', err => gutil.error(err)));
+
+g.task('copy:package', () => g
+    .src('./package.json')
+    .pipe(depsToPeer())
+    .pipe(g.dest('./dist/'))
+    .on('error', err => gutil.error(err)))

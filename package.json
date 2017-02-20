@@ -9,8 +9,8 @@
     "prebuild": "npm run clean",
     "build": "ngc -p src/tsconfig.json && gulp",
     "postbuild": "node scripts/copy-package",
+    "rebuild": "tsc -p src/tsconfig.json && gulp",
     "clean": "rimraf ./dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "release": "standard-version"
   },
   "repository": {
@@ -35,11 +35,13 @@
     "commitizen": "^2.9.5",
     "cz-conventional-changelog": "^1.2.0",
     "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0",
+    "gulp-typescript": "^3.1.5",
     "rimraf": "^2.5.4",
     "standard-version": "^4.0.0",
+    "through-gulp": "^0.5.0",
     "typescript": "^2.1.6"
   },
-  "peerDependencies": {},
   "dependencies": {
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
