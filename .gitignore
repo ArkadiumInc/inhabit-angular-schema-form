@@ -1,4 +1,5 @@
 /.idea
+.tscout
 .vscode
 node_modules
 dist
