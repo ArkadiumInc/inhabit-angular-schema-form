@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/ArkadiumInc/inhabit-angular-schema-from/compare/v1.1.1-alpha.1...v1.2.0) (2017-02-20)
+
+
+### Bug Fixes
+
+* **build:** AoT compilation ([08e8632](https://github.com/ArkadiumInc/inhabit-angular-schema-from/commit/08e8632))
+
+
+### Features
+
+* **build:** Improve build and add watch task ([a8f96b8](https://github.com/ArkadiumInc/inhabit-angular-schema-from/commit/a8f96b8))
+* **controls:** Add boolean and number controls ([1f9b9fb](https://github.com/ArkadiumInc/inhabit-angular-schema-from/commit/1f9b9fb))
+
+
+
 <a name="1.1.1-alpha.1"></a>
 ## [1.1.1-alpha.1](https://github.com/ArkadiumInc/inhabit-angular-schema-from/compare/v1.1.1-alpha.0...v1.1.1-alpha.1) (2017-02-17)
 
