@@ -2,13 +2,14 @@
     <div [ngSwitch]="control.controlType">
 
         <!-- Text Form Control -->
-        <md-input *ngSwitchCase="'text'"
-                  [formControlName]="control.key"
-                  [id]="control.key"
-                  [value]="control.value"
-                  [type]="control.controlType">
-            <md-placeholder>{{control.title}}</md-placeholder>
-        </md-input>
+        <md-input-container *ngSwitchCase="'text'">
+            <input mdInput
+                   [placeholder]="control.title"
+                   [formControlName]="control.key"
+                   [id]="control.key"
+                   [value]="control.value"
+                   [type]="control.controlType">
+        </md-input-container>
         <!-- Text Form Control -->
 
         <!-- Select Form Control -->

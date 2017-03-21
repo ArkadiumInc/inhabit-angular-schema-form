@@ -27,7 +27,6 @@ export class JsonSchemaFormService {
         schema = this.flattenSchema(schema);
         // Iterate through schema properties
         let formControls: Array<any> = [];
-        debugger;
         Object.keys(schema.properties)
             .forEach(key => {
                 const property = schema.properties[key];
