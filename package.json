@@ -1,6 +1,6 @@
 {
   "name": "inhabit-angular-schema-form",
-  "version": "2.0.1-alpha.1",
+  "version": "2.0.1-alpha.2",
   "description": "InHabit angular2 Json Schema Form module",
   "main": "index.js",
   "module": "index.js",
@@ -46,7 +46,7 @@
     "@angular/compiler": "^2.4.8 || >=4.0.0",
     "@angular/core": "^2.4.0 || >=4.0.0",
     "@angular/forms": "^2.4.1 || >=4.0.0",
-    "@angular/material": "^2.0.0-beta.2",
+    "@angular/material": "^2.0.0-beta.5",
     "@angular/platform-browser": "~2.4.0",
     "@angular/platform-server": "^2.4.0",
     "object-path": "^0.11.3",
