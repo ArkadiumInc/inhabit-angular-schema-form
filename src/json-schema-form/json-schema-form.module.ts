@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders }    from '@angular/core';
 import { CommonModule }                     from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule }                   from '@angular/material';
+import { JSFMaterialModule }                from './JSFMaterialModule';
 
 import { JsonSchemaFormComponent }     from './json-schema-form.component';
 import { DynamicFormComponent }        from './dynamic-form/dynamic-form.component';
@@ -13,10 +13,12 @@ import { JsonSchemaFormService }       from './json-schema-form.service';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule
+        JSFMaterialModule
     ],
     declarations: [
-        JsonSchemaFormComponent, DynamicFormComponent, DynamicFormControlComponent
+        JsonSchemaFormComponent,
+        DynamicFormComponent,
+        DynamicFormControlComponent
     ],
     exports: [JsonSchemaFormComponent],
     providers: [JsonSchemaFormService]
