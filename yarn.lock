@@ -46,11 +46,13 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/platform-server@^2.4.0":
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-2.4.8.tgz#6ccf9550f11137286007c7ff01d4b449c421acbe"
+"@angular/platform-server@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-5.0.0.tgz#877d25ef814af92fffc7b0b523b971a6ff222018"
   dependencies:
-    parse5 "^2.2.1"
+    domino "^1.0.29"
+    tslib "^1.7.1"
+    xhr2 "^0.1.4"
 
 "@angular/tsc-wrapped@0.5.2":
   version "0.5.2"
@@ -591,6 +593,10 @@ detect-indent@4.0.0:
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-4.0.0.tgz#f76d064352cdf43a1cb6ce619c4ee3a9475de208"
   dependencies:
     repeating "^2.0.0"
+
+domino@^1.0.29:
+  version "1.0.30"
+  resolved "https://registry.yarnpkg.com/domino/-/domino-1.0.30.tgz#54a4154ecae968616680f8feba3cedff355c71f4"
 
 dot-prop@^3.0.0:
   version "3.0.0"
@@ -1964,10 +1970,6 @@ parse-passwd@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/parse-passwd/-/parse-passwd-1.0.0.tgz#6d5b934a456993b23d37f40a382d6f1666a8e5c6"
 
-parse5@^2.2.1:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/parse5/-/parse5-2.2.3.tgz#0c4fc41c1000c5e6b93d48b03f8083837834e9f6"
-
 path-dirname@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/path-dirname/-/path-dirname-1.0.2.tgz#cc33d24d525e099a5388c0336c6e32b9160609e0"
@@ -2679,6 +2681,10 @@ wrap-ansi@^2.0.0:
 wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
+
+xhr2@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/xhr2/-/xhr2-0.1.4.tgz#7f87658847716db5026323812f818cadab387a5f"
 
 "xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.0, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
