@@ -1,6 +1,6 @@
 {
   "name": "inhabit-angular-schema-form",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "InHabit angular2 Json Schema Form module",
   "main": "index.js",
   "module": "index.js",
