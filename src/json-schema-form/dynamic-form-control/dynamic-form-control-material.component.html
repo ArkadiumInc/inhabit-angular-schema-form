@@ -2,26 +2,26 @@
     <div [ngSwitch]="control.controlType">
 
         <!-- Text Form Control -->
-        <md-input-container *ngSwitchCase="'text'">
-            <input mdInput
+        <mat-input-container *ngSwitchCase="'text'">
+            <input matInput
                    [placeholder]="control.title"
                    [formControlName]="control.key"
                    [id]="control.key"
                    [value]="control.value"
                    [type]="control.controlType">
-        </md-input-container>
+        </mat-input-container>
         <!-- Text Form Control -->
 
         <!-- Select Form Control -->
-        <md-select *ngSwitchCase="'select'"
+        <mat-select *ngSwitchCase="'select'"
                    placeholder="{{control.title}}"
                    [formControlName]="control.key">
-            <md-option *ngFor="let opt of control.options" [value]="opt.key">{{ opt.value }}</md-option>
-        </md-select>
+            <mat-option *ngFor="let opt of control.options" [value]="opt.key">{{ opt.value }}</mat-option>
+        </mat-select>
         <!-- Select Form Control -->
 
         <!-- Checkbox Form Control -->
-        <md-checkbox *ngSwitchCase="'checkbox'" [formControlName]="control.key">{{control.title}}</md-checkbox>
+        <mat-checkbox *ngSwitchCase="'checkbox'" [formControlName]="control.key">{{control.title}}</mat-checkbox>
         <!-- Checkbox Form Control -->
 
     </div>

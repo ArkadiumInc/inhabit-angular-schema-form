@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MdButtonModule, MdInputModule, MdSelectModule, MdCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
 
 @NgModule({
-    imports: [MdButtonModule, MdInputModule, MdSelectModule, MdCheckboxModule],
-    exports: [MdButtonModule, MdInputModule, MdSelectModule, MdCheckboxModule],
+    imports: [MatButtonModule, MatInputModule, MatSelectModule, MatCheckboxModule],
+    exports: [MatButtonModule, MatInputModule, MatSelectModule, MatCheckboxModule],
 })
 export class JSFMaterialModule { }
